@@ -1,8 +1,8 @@
 import React from "react";
 import { useWordle } from "../context/WordleContext";
+import { coloredGuessType } from "../hooks/useWordle";
 
-export default function ColoredGuesses() {
-  const { coloredGuesses } = useWordle();
+export default function ColoredGuesses({coloredGuesses} : {coloredGuesses: coloredGuessType[][]}) {
   return (
     <>
       {coloredGuesses.map((word, index) => (

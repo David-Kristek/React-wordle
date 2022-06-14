@@ -4,9 +4,15 @@ import {
   useWordle,
   WORD_LENGTH,
 } from "../context/WordleContext";
+import { coloredGuessType } from "../hooks/useWordle";
 
-export default function CurrentGuess() {
-  const { currentGuess, coloredGuesses } = useWordle();
+export default function CurrentGuess({
+  currentGuess,
+  coloredGuesses,
+}: {
+  currentGuess: string;
+  coloredGuesses: coloredGuessType[][];
+}) {
   return (
     <>
       {MAX_GUESSES_NUMBER - coloredGuesses.length > 0 && (

@@ -1,7 +1,11 @@
 import React from "react";
 import { MAX_GUESSES_NUMBER, useWordle } from "../context/WordleContext";
-export default function RestOfTable() {
-  const { coloredGuesses } = useWordle();
+import { coloredGuessType } from "../hooks/useWordle";
+export default function RestOfTable({
+  coloredGuesses,
+}: {
+  coloredGuesses: coloredGuessType[][];
+}) {
   return (
     <>
       {MAX_GUESSES_NUMBER - coloredGuesses.length > 0 &&

@@ -6,9 +6,9 @@ function App() {
   return (
     <div className="App">
       <h1>Wordle (Lingo)</h1>
-      <WordleProvider>
+      {/* <WordleProvider> */}
         <Wordle />
-      </WordleProvider>
+      {/* </WordleProvider> */}
     </div>
   );
 }

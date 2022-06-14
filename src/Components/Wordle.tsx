@@ -1,17 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import {
-  MAX_GUESSES_NUMBER,
-  useWordle,
-  WORD_LENGTH,
-} from "../context/WordleContext";
+import { useWordle } from "../hooks/useWordle";
 import ColoredGuesses from "./ColoredGuesses";
 import CurrentGuess from "./CurrentGuess";
 import Keypad from "./Keypad";
 import RestOfTable from "./RestOfTable";
 
 export default function Wordle() {
-  const { solution, modal, closeModal } =
-    useWordle();
+  const { solution, modal, closeModal, coloredGuesses, currentGuess } = useWordle();
   const modalRef = useRef<HTMLDivElement>(null);
   const handleClickOutside = (event: any) => {
     if (!modalRef.current?.contains(event.target) && modal) {
@@ -35,11 +30,11 @@ export default function Wordle() {
         </div>
       )}
       {/* all colored guesses rows */}
-      <ColoredGuesses />
+      <ColoredGuesses coloredGuesses={coloredGuesses} />
       {/* current guess  */}
-      <CurrentGuess />
+      <CurrentGuess currentGuess={currentGuess} coloredGuesses={coloredGuesses}/>
       {/* rest of rows and fields to have always full table of maximal guess number rows */}
-      <RestOfTable />
+      <RestOfTable coloredGuesses={coloredGuesses} />
 
       <Keypad />
     </div>
